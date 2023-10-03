@@ -4,10 +4,15 @@ type User = {
   email: string,
 };
 
-const Page = async () => {
+const getUsers = async (): Promise<User[]> => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users: User[] = await response.json();
-  console.log(users); // Server Componentsの場合、サーバ側処理になるのでnode側のlogに出てくる
+  const users = response.json();
+  console.log(users);
+  return users;
+}
+
+const Page = async () => {
+  const users = await getUsers();
 
   return (
     <div className="m-4">
