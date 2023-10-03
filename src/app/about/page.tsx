@@ -6,6 +6,9 @@ const Page = () => {
       <Link href="/" className="underline">
         Home
       </Link>
+      <Link href="/users" className="underline">
+        Users
+      </Link>
       <h1 className="text-2xl">About</h1>
     </div>
   );
