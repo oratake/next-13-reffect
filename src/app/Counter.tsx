@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useCounter } from '../context/CounterProvider';
 
 const Counter = ({ children }: { children: React.ReactNode }) => { // Server Componentを受け取れるようchildren propsを設定
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useCounter();
   const increment = () => {
     setCount((prev) => prev + 1);
   };
