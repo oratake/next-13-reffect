@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const Counter = () => {
+const Counter = ({ children }: { children: React.ReactNode }) => { // Server Componentを受け取れるようchildren propsを設定
   const [count, setCount] = useState<number>(0);
   const increment = () => {
     setCount((prev) => prev + 1);
@@ -16,6 +16,7 @@ const Counter = () => {
       >
         Increment
       </button>
+      {children}
     </>
   );
 };
