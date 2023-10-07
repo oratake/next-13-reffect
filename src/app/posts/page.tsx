@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma';
 import { Post } from '@prisma/client';
+import AddPost from './AddPost';
 
 const Page = async () => {
   const response = await fetch('http://localhost:3000/api/posts');
@@ -22,6 +23,7 @@ const Page = async () => {
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
+      <AddPost />
     </div >
   );
 }
