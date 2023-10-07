@@ -1,8 +1,22 @@
+import type { Metadata } from 'next';
 import { type User } from '../UserList';
 
+async function getUser(id: string) {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  return response.json();
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string },
+}): Promise<Metadata> {
+  const user = await getUser(params.id);
+  return { title: 'ユーザ詳細: ' + user.name };
+}
+
 const Page = async ({ params }: { params: { id: string } }) => {
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`);
-  const user: User = await response.json();
+  const user: User = await getUser(params.id);
 
   return (
     <div className="m-4">
@@ -12,6 +26,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <p>Email: {user.email}</p>
     </div>
   );
-}
+};
 
 export default Page;
