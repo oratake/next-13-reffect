@@ -3,7 +3,9 @@ import { Post } from '@prisma/client';
 import AddPost from './AddPost';
 
 const Page = async () => {
-  const response = await fetch('http://localhost:3000/api/posts');
+  const response = await fetch('http://localhost:3000/api/posts', {
+    cache: 'no-store',
+  });
   const apiPosts: Post[] = await response.json();
 
   const posts = await prisma.post.findMany();
