@@ -2,7 +2,13 @@ import { Suspense } from 'react';
 import UserList from './UserList';
 import OtherUserList from './OtherUserList';
 
+export const metadata = {
+  title: 'ユーザの一覧ページ',
+  description: 'JSONPlaceHolderからユーザ一覧を取得するページ',
+};
+
 const Page = async () => {
+
   const response = await fetch('http://localhost:3000/api', {
     method: 'POST',
     headers: {
